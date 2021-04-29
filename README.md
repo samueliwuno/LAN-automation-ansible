@@ -1,4 +1,20 @@
-# Shopify Network Design/Automation
+- [Shopify Network Design/Automation](#shopify-network-design-automation)
+      - [Author: Samuel Iwuno](#author--samuel-iwuno)
+  * [Terms and Acronyms](#terms-and-acronyms)
+  * [Network Requirements](#network-requirements)
+  * [Network Diagram](#network-diagram)
+  * [Hardware Choices](#hardware-choices)
+  * [VLANs and Subnetting](#vlans-and-subnetting)
+      - [CIDR Block](#cidr-block)
+      - [VLANs](#vlans)
+      - [Routed Ports](#routed-ports)
+      - [Access Ports](#access-ports)
+  * [Automation and Management](#automation-and-management)
+  * [Suggestions for improving Network Resilency, Redundancy, Efficiency and Security](#suggestions-for-improving-network-resilency--redundancy--efficiency-and-security)
+  * [Appliance Details](#appliance-details)
+
+
+# SHOPIFY NETWORK DESIGN/AUTOMATION
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
  This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, Ansible provisioning scripts and instructions on how to import the required images into GNS3 can be provided if requested via Github

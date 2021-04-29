@@ -8,5 +8,10 @@
 ## Network Diagram
 ![alt text](https://github.com/samueliwuno/ShopifyLAN/blob/main/Net_Diag.png)
 
+## Hardware Choices
+
+## Automation
+Both the 
+
     - 
  

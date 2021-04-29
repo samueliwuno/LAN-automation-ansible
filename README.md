@@ -1,11 +1,12 @@
 # Shopify Network Design/Automation
-----------------------------------------
+---------------------------------------------------------
  This Project shows the implementation of a LAN required in GNS3. the GNS3 project file and instructions on how to import the required images will be provided here  
  ## Terms and Acronyms
-- ALS - Access Layer Switch
-- DLS - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
+- ALS  - Access Layer Switch
+- DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
 - NGFW - Next Generation Firewall
-- CTR - Wireless Controller
+- CTR  - Wireless Controller
+- WAP  - Wireless Access Point
 
  ## Network Requirements
  - Provide Wired/Wireless Connectivity for a Workspace
@@ -19,11 +20,25 @@
 - For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch
 - For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR** will be more than sufficient. 
 
+Details of this appliances are provided at the bottom of this document
+## VLANs and Subnetting
+
 ## Automation and Management
-Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible
+Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place
 ## Suggestions for improving Network Resilency and Redundancy
 - While the **Fortigate 80F** Unit is  sufficient for the the job here, if budget allows, and if you want the NGFW and IPS Throughput to match the Speeds of the Switches Uplink ports, then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here 
-- The EOL for the **C35 CTR** is coming up (2025) a newer model, like the **NX 5500 Wing CTR** might be recommended for Long term support
-- Redundancy and Resilency can be improved for the network further by introducinf a second **DLS** switch to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
+- The EOL for the **C35 CTR** is coming up (2025). A newer model, like the **NX 5500 Wing CTR** is recommended for WIFI6 and Long term support
+- Redundancy and Resilency can be improved for the network further by introducing a second **DLS** switch to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
+
+## Appliance Details
+[Fortigate 80F](https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/fortigate-fortiwifi-80f-series.pdf)  
+[Fortigate 600E](https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/FortiGate_600E.pdf)  
+[Summit X450-G2](https://cloud.kapostcontent.net/pub/6f346f0e-30e3-452c-86cd-56795f6a1a65/x450-g2-data-sheet.pdf?kui=bKqLVAj7ueLS6LTgIp2rvw)  
+[ExtremeSwitching V400 Series](https://cloud.kapostcontent.net/pub/59b81c15-076d-4069-b63d-ca89e84142cb/extremeswitching-v400-series-data-sheet?kui=ECOXrpgUWonsjQJFALylMg)  
+[ExtremeWireless C35 CTR](https://cloud.kapostcontent.net/pub/38236555-1e21-43a3-9c61-af84c71a5844/wireless-controllers-ds-1.pdf)  
+[ExtremeWireless™ WiNG NX 5500](https://kapost-files-prod.s3.amazonaws.com/kapost/55ba7c9e07003d9aab000394/studio/content/581cbe296fa64c1e0e00020c/published/nx-5500-data-sheet.pdf?kui=taYpxxpxR60ePX3p3eHN1w)  
+[AP305C/CX WAP](https://cloud.kapostcontent.net/pub/c3de16b9-58a8-430d-87c7-1e26b6ceebe0/ap-305c)  
+[ExtremeNetworks and Fortinet Fabric Ready](https://www.fortinet.com/content/dam/fortinet/assets/alliances/Extreme-Network-Fortinet-SB.pdf)
+
     - 
  

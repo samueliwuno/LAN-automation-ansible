@@ -6,7 +6,7 @@
  - Workspace consists of 3 Floors with at least 100 Devices on average  
  - Devices may include Workstations, Printers, Smartphones
 ## Network Diagram
-![alt text](../Net_Diag.png)
+![alt text](https://github.com/samueliwuno/ShopifyLAN/blob/main/Net_Diag.png)
 
     - 
  

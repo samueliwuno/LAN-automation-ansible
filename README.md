@@ -21,7 +21,7 @@
 Details of chosen appliances are provided at the bottom of this document
 - For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive GUI and market share when it comes to NGFW Appliances. the chosen switches can also be integrated into the Fortinet's Security Fabric. the **Fortigate 80F** unit will be sufficient for this network. 
 - For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch. this switches come with up to 48 Gigabit Ethernet Ports and 4 10Gbs Uplink Ports. the CLi is also very intuitive. and easy to use. Both switches also run the same EXOS recommended versions (EXOS 31.2.1.1)
-- For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR** will be more than sufficient. 
+- For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR**, and the **AP305C/CX WAP** will be more than sufficient. 
 
 
 ## VLANs and Subnetting

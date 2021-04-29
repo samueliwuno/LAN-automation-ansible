@@ -1,4 +1,4 @@
-- [Shopify Network Design/Automation](#shopify-network-design-automation)
+- [SHOPIFY NETWORK DESIGN/AUTOMATION](#shopify-network-design-automation)
       - [Author: Samuel Iwuno](#author--samuel-iwuno)
   * [Terms and Acronyms](#terms-and-acronyms)
   * [Network Requirements](#network-requirements)
@@ -12,6 +12,9 @@
   * [Automation and Management](#automation-and-management)
   * [Suggestions for improving Network Resilency, Redundancy, Efficiency and Security](#suggestions-for-improving-network-resilency--redundancy--efficiency-and-security)
   * [Appliance Details](#appliance-details)
+
+
+
 
 
 # SHOPIFY NETWORK DESIGN/AUTOMATION

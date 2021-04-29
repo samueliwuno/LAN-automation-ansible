@@ -41,7 +41,7 @@ All Links between the DLS and the ALSs will be trunked allowing access to all co
 
 #### Routed Ports 
 - DLS <-> NGFW - 172.16.1.0/30
-- NGFW <-> ISPs will either be static via DHCP. This is dependent on the public addresses provided by the ISPs  
+- NGFW <-> ISPs will either be static or DHCP. This is dependent on the public addresses provided by the ISPs  
 
 The NGFW will handle all the security policies, NAT and VPN requirements. the Firewall will get access to the VLANs via OSPF neighbouring with DLS
 

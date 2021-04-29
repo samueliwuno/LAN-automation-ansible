@@ -27,7 +27,7 @@ Details of chosen appliances are provided at the bottom of this document
 ## VLANs and Subnetting
 According to the Network Requirements there are going to be, on average 100 devices requring Wired and Wireless Connectivity on each floor of the workspace. With this requirement, i have decided to seperate the LAN into seperate subnets (VLANS). Each VLAN will be a /24 network providing 254 usable addresses for both Network and User devices. The VLANs will be accessible via the ALSs installed on each floor. the DLS, CTR and the NGFW will be installed on the ground floor. WAPs will be installed on each floor to provide wireless access to network. They can be connected directly to the CTR as shown in the diagram or connected to the ALSs
 #### CIDR Block
-Private IP addresses used will be 172.16.0.0/16
+The private IP address block that will used will be 172.16.0.0/16
 #### VLANs
 Subnets for Vlans will be 172.16.x.0/24 where x is the VLAN_ID.
 - User_Workstations (10) - PCs, Laptops

@@ -78,6 +78,7 @@ The task above enables and configures Ospf for DLS1. the playbook will only comp
 - Redundancy and Resilency can be improved for the network further by introducing a second **DLS** to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
 - Security can be improved by limiting access between certain VLANs, for example, the only VLANs accessible by the public will be the DMZ, and only certain VLANs will be able to access the Accounting VLANs. This can be done via the Firewall Policies
 - Further security improvements can include - Shutting down unused ports on all devices, using non-default VLANs and passwords. and implementing Access Control.
+- Introduce a dedicated Voice VLAN if VOIP phones are going to be introduced
 
 ## Appliance Details
 [Fortigate 80F](https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/fortigate-fortiwifi-80f-series.pdf)  

@@ -66,6 +66,3 @@ Both the chosen Switches and Firewall Have their Cloud Management and Automation
 [ExtremeWireless™ WiNG NX 5500](https://kapost-files-prod.s3.amazonaws.com/kapost/55ba7c9e07003d9aab000394/studio/content/581cbe296fa64c1e0e00020c/published/nx-5500-data-sheet.pdf?kui=taYpxxpxR60ePX3p3eHN1w)  
 [AP305C/CX WAP](https://cloud.kapostcontent.net/pub/c3de16b9-58a8-430d-87c7-1e26b6ceebe0/ap-305c)  
 [ExtremeNetworks and Fortinet Fabric Ready](https://www.fortinet.com/content/dam/fortinet/assets/alliances/Extreme-Network-Fortinet-SB.pdf)
-
-    - 
- 

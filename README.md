@@ -1,7 +1,7 @@
 # Shopify Network Design/Automation
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
- This Project shows the implementation of a LAN required in GNS3. the GNS3 project file and instructions on how to import the required images can be provided if requested  
+ This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. the GNS3 project file, Ansible provisioning scripts and instructions on how to import the required images into GNS3 can be provided if requested via Github
  ## Terms and Acronyms
 - ALS  - Access Layer Switch
 - DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
@@ -49,7 +49,7 @@ The NGFW will handle all the security policies, NAT and VPN requirements. the Fi
 Access Ports can be implemented as per Network requirement. but for now, that is outside the scope of this project
 
 ## Automation and Management
-Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place
+Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. 
 ## Suggestions for improving Network Resilency, Redundancy, Efficiency and Security
 - While the **Fortigate 80F** Unit is  sufficient for the the job here, if budget allows, and if you want the NGFW and IPS Throughput to match the Speeds of the Switches Uplink ports(10Gbps), then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here 
 - The EOL for the **C35 CTR** is coming up (2025). A newer model, like the **NX 5500 Wing CTR** is recommended for WIFI6 and Long term support

@@ -1,3 +1,5 @@
+- # TABLE OF CONTENTS  
+- ---------------------------------------------------------------------------------
 - [SHOPIFY NETWORK DESIGN/AUTOMATION](#shopify-network-design-automation)
       - [Author: Samuel Iwuno](#author--samuel-iwuno)
   * [Terms and Acronyms](#terms-and-acronyms)

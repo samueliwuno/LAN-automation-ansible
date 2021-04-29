@@ -1,0 +1,100 @@
+- name: Creating VLANS
+  exos_config:
+    lines:
+      - disable ports 1-24
+      - configure vlan default delete ports all
+      - configure vr VR-Default add ports 1-24
+      - create vlan "User_Workstation"
+      - configure vlan User_Workstation tag 10
+      - create vlan "Accounting"
+      - configure vlan Accounting tag 20
+      - create vlan "Printers"
+      - configure vlan Printers tag 30
+      - create vlan "DMZ"
+      - configure vlan DMZ tag 40
+      - create vlan "Wifi"
+      - configure vlan Wifi tag 50
+      - create vlan "Native_Management"
+      - configure vlan Native_Management tag 99
+
+- name:  Adding Appropriate Port to VLANs
+  exos_config:
+    lines:
+      - configure vlan User_Workstation add ports 1-6 tagged  
+      - configure vlan Accounting add ports 1-6 tagged  
+      - configure vlan Printers add ports 1-6 tagged  
+      - configure vlan DMZ add ports 1-6 tagged  
+      - configure vlan Wifi add ports 1-6 tagged  
+      - configure vlan Native_Management add ports 1-6 tagged 
+      - enable ports 1-6
+
+- name: Configuring Specifics for DLS1
+  exos_config:
+    lines:
+      - create vlan "toFW"
+      - configure vlan toFW add ports 12 untagged
+      - configure vlan User_Workstation ipaddress 172.16.10.1 255.255.255.0
+      - configure vlan Accounting ipaddress 172.16.20.1 255.255.255.0
+      - configure vlan Printers ipaddress 172.16.30.1 255.255.255.0
+      - configure vlan DMZ ipaddress 172.16.40.1 255.255.255.0
+      - configure vlan Wifi ipaddress 172.16.50.1 255.255.255.0
+      - configure vlan Native_Management ipaddress 172.16.99.1 255.255.255.0
+      - enable ipforwarding vlan toFW
+      - configure vlan Wifi dhcp-address-range 172.16.50.50 - 172.16.50.250
+      - configure vlan Wifi dhcp-options default-gateway 172.16.50.1
+      - configure vlan Wifi dhcp-options dns-server 172.16.50.1
+      - enable dhcp ports 7 vlan Wifi
+      - enable ports 7,12
+  when: inventory_hostname == "DLS1"
+
+- name: Configuring Specifics for ALS1
+  exos_config:
+    lines:
+      - configure vlan User_Workstation ipaddress 172.16.10.2 255.255.255.0
+      - configure vlan Accounting ipaddress 172.16.20.2 255.255.255.0
+      - configure vlan Printers ipaddress 172.16.30.2 255.255.255.0
+      - configure vlan DMZ ipaddress 172.16.40.2 255.255.255.0
+      - configure vlan Wifi ipaddress 172.16.50.2 255.255.255.0
+      - configure vlan Native_Management ipaddress 172.16.99.2 255.255.255.0
+  when: inventory_hostname == "ALS1"
+
+- name: Configuring Specifics for ALS2
+  exos_config:
+    lines:
+      - configure vlan User_Workstation ipaddress 172.16.10.3 255.255.255.0
+      - configure vlan Accounting ipaddress 172.16.20.3 255.255.255.0
+      - configure vlan Printers ipaddress 172.16.30.3 255.255.255.0
+      - configure vlan DMZ ipaddress 172.16.40.3 255.255.255.0
+      - configure vlan Wifi ipaddress 172.16.50.3 255.255.255.0
+      - configure vlan Native_Management ipaddress 172.16.99.3 255.255.255.0
+  when: inventory_hostname == "ALS2"
+
+- name: Configuring Specifics for ALS3
+  exos_config:
+    lines:
+      - configure vlan User_Workstation ipaddress 172.16.10.4 255.255.255.0
+      - configure vlan Accounting ipaddress 172.16.20.4 255.255.255.0
+      - configure vlan Printers ipaddress 172.16.30.4 255.255.255.0
+      - configure vlan DMZ ipaddress 172.16.40.4 255.255.255.0
+      - configure vlan Wifi ipaddress 172.16.50.4 255.255.255.0
+      - configure vlan Native_Management ipaddress 172.16.99.4 255.255.255.0
+  when: inventory_hostname == "ALS3"
+
+
+
+
+- name: Enabling IP Forwarding on VLANs
+  exos_config:
+    lines:
+      
+      - enable ipforwarding vlan User_Workstation
+      - enable ipforwarding vlan Accounting
+      - enable ipforwarding vlan Printers
+      - enable ipforwarding vlan DMZ
+      - enable ipforwarding vlan Wifi
+      - enable ipforwarding vlan Native_Management
+
+      
+- name: save running to startup when modified
+  exos_config:
+    save_when: modified

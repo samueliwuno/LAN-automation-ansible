@@ -1,0 +1,12 @@
+- name: Configure OSPF
+  exos_config:
+    lines:
+      - enable ospf
+      - configure ospf add vlan Accounting area 0.0.0.0 
+      - configure ospf add vlan DMZ area 0.0.0.0 
+      - configure ospf add vlan Native_Management area 0.0.0.0 
+      - configure ospf add vlan Printers area 0.0.0.0 
+      - configure ospf add vlan toFW area 0.0.0.0 
+      - configure ospf add vlan User_Workstation area 0.0.0.0 
+      - configure ospf add vlan Wifi area 0.0.0.0
+  when: inventory_hostname == "DLS1"

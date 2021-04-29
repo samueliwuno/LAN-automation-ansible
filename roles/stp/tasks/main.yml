@@ -1,0 +1,78 @@
+- name: Creating STPD Instances
+  exos_config:
+    lines:
+      - create stpd s10
+      - create stpd s20
+      - create stpd s30
+      - create stpd s40
+      - create stpd s50
+      - create stpd s99
+
+- name: Setting STPD Instance Mode to PVST+
+  exos_config:
+    lines:
+      - configure stpd s10 mode dot1w
+      - configure stpd s20 mode dot1w
+      - configure stpd s30 mode dot1w
+      - configure stpd s40 mode dot1w
+      - configure stpd s50 mode dot1w
+      - configure stpd s99 mode dot1w
+
+
+
+- name: Setting STPD default-encapsulation to PVST+
+  exos_config:
+    lines:
+      - configure stpd s10 default-encapsulation pvst-plus 
+      - configure stpd s20 default-encapsulation pvst-plus 
+      - configure stpd s30 default-encapsulation pvst-plus 
+      - configure stpd s40 default-encapsulation pvst-plus 
+      - configure stpd s50 default-encapsulation pvst-plus 
+      - configure stpd s99 default-encapsulation pvst-plus 
+
+
+- name: Adding VLANs and Ports to their STPD Instances
+  exos_config:
+    lines:
+      - configure stpd s10 add vlan 10 ports 1-6 pvst-plus 
+      - configure stpd s20 add vlan 20 ports 1-6 pvst-plus 
+      - configure stpd s30 add vlan 30 ports 1-6 pvst-plus 
+      - configure stpd s40 add vlan 40 ports 1-6 pvst-plus 
+      - configure stpd s50 add vlan 50 ports 1-6 pvst-plus 
+      - configure stpd s99 add vlan 99 ports 1-6 pvst-plus 
+
+- name: Creating Tages for STPD Instances
+  exos_config:
+    lines:
+      - configure stpd s10 tag 10 
+      - configure stpd s20 tag 20 
+      - configure stpd s30 tag 30 
+      - configure stpd s40 tag 40 
+      - configure stpd s50 tag 50 
+      - configure stpd s99 tag 99 
+
+- name: enabling AUto-Bind Features on STP Instances
+  exos_config:
+    lines:
+      - enable stpd s10 auto-bind vlan 10
+      - enable stpd s20 auto-bind vlan 20
+      - enable stpd s30 auto-bind vlan 30
+      - enable stpd s40 auto-bind vlan 40
+      - enable stpd s50 auto-bind vlan 50
+      - enable stpd s99 auto-bind vlan 99
+
+- name: Setting STP Priority on Required Root Bridge
+  exos_config:
+    lines:
+      - configure stpd s10 priority 28672
+      - configure stpd s20 priority 28672
+      - configure stpd s30 priority 28672
+      - configure stpd s40 priority 28672
+      - configure stpd s50 priority 28672
+      - configure stpd s99 priority 28672
+  when: inventory_hostname == "DLS1"
+
+
+- name: save running to startup when modified
+  exos_config:
+    save_when: modified

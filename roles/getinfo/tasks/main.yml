@@ -1,0 +1,20 @@
+
+- name:  Gathering all legacy facts
+  exos_facts:
+    gather_subset: all
+
+- name: Getting Default Configs of Switches
+  exos_command:
+      commands:
+        - show version
+        - show vlan
+        - show stpd
+- local_action: copy content=commands dest={{inventory_hostname}}.txt
+
+- name: Setting SNMP System Name
+  exos_config:
+    lines: configure snmp sysName "{{ inventory_hostname }}"
+  
+
+
+     

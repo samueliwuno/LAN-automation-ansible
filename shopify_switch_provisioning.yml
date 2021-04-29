@@ -1,0 +1,14 @@
+- name: Provision a EXOS Switches with required configuration
+
+  # Specify the hosts you want to target
+  hosts: EXOS
+  # SSH Variables has been configured in the /etc/ansible/host file
+  # run playbook with 'sudo ansible-playbook shopify.automation.yml -k'
+
+
+  roles:
+    - getinfo
+    - vlans
+    - stp
+    - routing
+ 

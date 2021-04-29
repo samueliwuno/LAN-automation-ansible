@@ -6,6 +6,7 @@
  - Workspace consists of 3 Floors with at least 100 Devices on average  
  - Devices may include Workstations, Printers, Smartphones
 ## Network Diagram
+![alt text](../)
 
     - 
  

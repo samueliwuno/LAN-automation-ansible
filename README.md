@@ -19,8 +19,8 @@
 
 ## Hardware Choices
 Details of chosen appliances are provided at the bottom of this document
-- For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive UI and market share when it comes to NGFW Appliances. the chosen switches can also be integrated into the Fortinet's Security Fabric. the **Fortigate 80F** unit will be sufficient for this network. 
-- For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch
+- For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive GUI and market share when it comes to NGFW Appliances. the chosen switches can also be integrated into the Fortinet's Security Fabric. the **Fortigate 80F** unit will be sufficient for this network. 
+- For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch. this switches come with up to 48 Gigabit Ethernet Ports and 4 10Gbs Uplink Ports. the CLi is also very intuitive. and easy to use
 - For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR** will be more than sufficient. 
 
 
@@ -51,7 +51,7 @@ Access Ports can be implemented as per Network requirement. but for now, that is
 ## Automation and Management
 Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. 
 ## Suggestions for improving Network Resilency, Redundancy, Efficiency and Security
-- While the **Fortigate 80F** Unit is  sufficient for the the job here, if budget allows, and if you want the NGFW and IPS Throughput to match the Speeds of the Switches Uplink ports(10Gbps), then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here 
+- While the **Fortigate 80F** Unit is sufficient for the the job here, if budget allows, and if you want the NGFW and IPS features Throughput to match the Speeds of the Switches Uplink ports(10Gbps), then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here.  
 - The EOL for the **C35 CTR** is coming up (2025). A newer model, like the **NX 5500 Wing CTR** is recommended for WIFI6 and Long term support
 - Redundancy and Resilency can be improved for the network further by introducing a second **DLS** switch to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
 - Security can be improved by limiting access between certain VLANs, for example, the only VLANs accessible by the public will be the DMZ, and only certain VLANs will be able to access the Accounting VLANs. this can be done via the Firewall Policies

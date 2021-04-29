@@ -1,12 +1,14 @@
 # Shopify Network Design/Automation
 ---------------------------------------------------------
- This Project shows the implementation of a LAN required in GNS3. the GNS3 project file and instructions on how to import the required images will be provided here  
+#### Author: Samuel Iwuno
+ This Project shows the implementation of a LAN required in GNS3. the GNS3 project file and instructions on how to import the required images can be provided if requested  
  ## Terms and Acronyms
 - ALS  - Access Layer Switch
 - DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
 - NGFW - Next Generation Firewall
 - CTR  - Wireless Controller
 - WAP  - Wireless Access Point
+- EOL  - End of Life Cycle
 
  ## Network Requirements
  - Provide Wired/Wireless Connectivity for a Workspace
@@ -16,19 +18,43 @@
 ![alt text](https://github.com/samueliwuno/ShopifyLAN/blob/main/Net_Diag.png)
 
 ## Hardware Choices
+Details of chosen appliances are provided at the bottom of this document
 - For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive UI and market share when it comes to NGFW Appliances. the chosen switches can also be integrated into the Fortinet's Security Fabric. the **Fortigate 80F** unit will be sufficient for this network. 
 - For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch
 - For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR** will be more than sufficient. 
 
-Details of this appliances are provided at the bottom of this document
+
 ## VLANs and Subnetting
+According to the Network Requirements there are going to be, on average 100 devices requring Wired and Wireless Connectivity on each floor of the workspace. With this requirement, i have decided to seperate the LAN into seperate subnets (VLANS). Each VLAN will be a /24 network providing 254 usable addresses for both Network and User devices. The VLANs will be accessible via the ALSs installed on each floor. the DLS, CTR and the NGFW will be installed on the ground floor. WAPs will be installed on each floor to provide wireless access to network. They can be connected directly to the CTR as shown in the diagram or connected to the ALSs
+#### CIDR Block
+Private IP addresses used will be 172.16.0.0/16
+#### VLANs
+Subnets for Vlans will be 172.16.x.0/24 where x is the VLAN_ID.
+- User_Workstations (10) - PCs, Laptops
+- Printers (20) - Faxes
+- Accounting (30) - Payrole Servers, User databases
+- DMZ (40) - Public Web Servers
+- Wifi (50)- Wireless devices like Smartphones, Smart Screens, Laptops or Guest devices
+- Native (99) - For Untagged Traffic for legacy devices that don't support traffic tagging
+
+All Links between the DLS and the ALSs will be trunked allowing access to all configured VLANs
+
+#### Routed Ports 
+- DLS <-> NGFW - 172.16.1.0/30
+- NGFW <-> ISPs will either be static via DHCP. This is dependent on the public addresses provided by the ISPs  
+
+The NGFW will handle all the security policies, NAT and VPN requirements. the Firewall will get access to the VLANs via OSPF neighbouring with DLS
+
+#### Access Ports
 
 ## Automation and Management
 Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place
-## Suggestions for improving Network Resilency and Redundancy
-- While the **Fortigate 80F** Unit is  sufficient for the the job here, if budget allows, and if you want the NGFW and IPS Throughput to match the Speeds of the Switches Uplink ports, then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here 
+## Suggestions for improving Network Resilency, Redundancy, Efficiency and Security
+- While the **Fortigate 80F** Unit is  sufficient for the the job here, if budget allows, and if you want the NGFW and IPS Throughput to match the Speeds of the Switches Uplink ports(10Gbps), then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here 
 - The EOL for the **C35 CTR** is coming up (2025). A newer model, like the **NX 5500 Wing CTR** is recommended for WIFI6 and Long term support
 - Redundancy and Resilency can be improved for the network further by introducing a second **DLS** switch to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
+- Security can be improved by limiting access between certain VLANs, for example, the only VLANs accessible by the public will be the DMZ, and only certain VLANs will be able to access the Accounting VLANs. this can be done via the Firewall Policies
+- Further security improvements can include - Shutting down unused ports on all devices, using non-default VLANs and passwords. and implementing Access Control.
 
 ## Appliance Details
 [Fortigate 80F](https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/fortigate-fortiwifi-80f-series.pdf)  

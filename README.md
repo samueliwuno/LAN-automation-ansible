@@ -31,7 +31,7 @@ Private IP addresses used will be 172.16.0.0/16
 #### VLANs
 Subnets for Vlans will be 172.16.x.0/24 where x is the VLAN_ID.
 - User_Workstations (10) - PCs, Laptops
-- Printers (20) - Faxes
+- Printers (20) - Printers and Faxes
 - Accounting (30) - Payrole Servers, User databases
 - DMZ (40) - Public Web Servers
 - Wifi (50)- Wireless devices like Smartphones, Smart Screens, Laptops or Guest devices

@@ -13,7 +13,6 @@
 - IPS - Intrusion Prevention System
 - OSPF - Open Shortest Path First (Dynamic Routing Protocol
 - VRRP - Virtual Router Redundancy Protocol
-- 
 
  ## Network Requirements
  - Provide Wired/Wireless Connectivity for a Workspace

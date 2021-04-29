@@ -46,6 +46,7 @@ All Links between the DLS and the ALSs will be trunked allowing access to all co
 The NGFW will handle all the security policies, NAT and VPN requirements. the Firewall will get access to the VLANs via OSPF neighbouring with DLS
 
 #### Access Ports
+Access Ports can be implemented as per Network requirement. but for now, that is outside the scope of this project
 
 ## Automation and Management
 Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). This projects solution will handle Automation using Ansible. this will be shown by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place

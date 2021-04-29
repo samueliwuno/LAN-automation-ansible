@@ -2,30 +2,35 @@
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
  This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, The Ansible provisioning playbook and instructions on how to import the required images into GNS3 can be provided if requested via Github
- ## Terms and Acronyms
+ ## Acronyms
 - ALS  - Access Layer Switch
 - DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
 - NGFW - Next Generation Firewall
 - CTR  - Wireless Controller
 - WAP  - Wireless Access Point
 - EOL  - End of Life Cycle
+- VLAN - virtual Local Area Network
+- IPS - Intrusion Prevention System
+- OSPF - Open Shortest Path First (Dynamic Routing Protocol
+- VRRP - Virtual Route Redundancy Protocol
+- 
 
  ## Network Requirements
  - Provide Wired/Wireless Connectivity for a Workspace
- - Workspace consists of 3 Floors with at least 100 Devices on average  
+ - Workspace consists of 3 Floors with at least 100 connected devices on average  
  - Devices may include Workstations, Printers, Smartphones
 ## Network Diagram
 ![alt text](https://github.com/samueliwuno/ShopifyLAN/blob/main/Net_Diag.png)
 
 ## Hardware Choices
 Details of chosen appliances are provided at the bottom of this document
-- For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive GUI and market share when it comes to NGFW Appliances. the chosen switches can also be integrated into the Fortinet's Security Fabric. the **Fortigate 80F** unit will be sufficient for this network. 
-- For the Switches, i have Decided to go with ExtremeNetworks. the **Summit X450-G2** will suffice for the **DLS** while for the **ALS** that will be installed on all floors will be the **V400 Series** Switch. this switches come with up to 48 Gigabit Ethernet Ports and 4 10Gbs Uplink Ports. the CLi is also very intuitive. and easy to use. Both switches also run the same EXOS recommended versions (EXOS 31.2.1.1)
+- For the Firewall, I have decided to go with Fortinet's Fortigate Firewall. They are one on the best in the market in regards to Intuitive GUI and market share when it comes to NGFW Appliances. The chosen switches can also be integrated into Fortinet's Security Fabric. The **Fortigate 80F** unit will be sufficient for this network. 
+- For the Switches, i have Decided to go with ExtremeNetworks. The **Summit X450-G2** will suffice for the **DLS** while for the **ALSs** that will be installed on all floors will be the **V400 Series** Switch. these switches come with up to 48 Gigabit Ethernet Ports and 4 10Gbs Uplink Ports. the Cli is also very intuitive and easy to use. Both switches also run the same EXOS recommended versions (EXOS 31.2.1.1)
 - For the Wireless Controllers and APs, ExtremeNetworks is also a good choice. The **C35 CTR**, and the **AP305C/CX WAP** will be more than sufficient. 
 
 
 ## VLANs and Subnetting
-According to the Network Requirements there are going to be, on average 100 devices requring Wired and Wireless Connectivity on each floor of the workspace. With this requirement, i have decided to seperate the LAN into seperate subnets (VLANS). Each VLAN will be a /24 network providing 254 usable addresses for both Network and User devices. The VLANs will be accessible via the ALSs installed on each floor. the DLS, CTR and the NGFW will be installed on the ground floor. WAPs will be installed on each floor to provide wireless access to network. They can be connected directly to the CTR as shown in the diagram or connected to the ALSs
+According to the Network Requirements there are going to be, on average 100 devices requiring Wired and Wireless Connectivity on each floor of the workspace. With this requirement, I have decided to seperate the LAN into seperate subnets (VLANS). Each VLAN will be a /24 network providing 254 usable addresses for both Network and User devices. The VLANs will be accessible via the ALSs installed on each floor. the DLS, CTR and the NGFW will be installed on the ground floor. WAPs will be installed on each floor to provide wireless access to network. They can be connected directly to the CTR as shown in the diagram or connected to the ALSs
 #### CIDR Block
 The private IP address block that will used will be 172.16.0.0/16
 #### VLANs
@@ -46,10 +51,10 @@ All Links between the DLS and the ALSs will be trunked allowing access to all co
 The NGFW will handle all the security policies, NAT and VPN requirements. the Firewall will get access to the VLANs via OSPF neighbouring with DLS
 
 #### Access Ports
-Access Ports can be implemented as per Network requirement. but for now, that is outside the scope of this project
+Access Ports can be implemented as per Network requirement. But for now, that is outside the scope of this project
 
 ## Automation and Management
-Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). However, This projects solution will handle Automation using Ansible. This will be done by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Management can then be done via ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. Below is a small snippet of what the provision playbook would look like
+Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). However, This projects solution will handle Automation using Ansible. For example This will be done by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Automation and Management can then be done via Ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. Below is a small snippet of what the provisioning playbook would look like
 
 ```
 - name: Configuring OSPF for DLS1
@@ -70,8 +75,8 @@ The task above enables and configures Ospf for DLS1. the playbook will only comp
 ## Suggestions for improving Network Resilency, Redundancy, Efficiency and Security
 - While the **Fortigate 80F** Unit is sufficient for the the job here, if budget allows, and if you want the NGFW and IPS features like deep packet inspection (Layer7) Throughput to match the Speeds of the Switches Uplink ports(10Gbps), then  the mid-range appliances like the **Fortigate 600E** unit may be recommended here.  
 - The EOL for the **C35 CTR** is coming up (2025). A newer model, like the **NX 5500 Wing CTR** is recommended for WIFI6 and Long term support
-- Redundancy and Resilency can be improved for the network further by introducing a second **DLS** switch to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
-- Security can be improved by limiting access between certain VLANs, for example, the only VLANs accessible by the public will be the DMZ, and only certain VLANs will be able to access the Accounting VLANs. this can be done via the Firewall Policies
+- Redundancy and Resilency can be improved for the network further by introducing a second **DLS** to the network. that way, VRRP can be configured on them to provided L3 gateway redundancy and load sharing for the uplinks to the Firewall 
+- Security can be improved by limiting access between certain VLANs, for example, the only VLANs accessible by the public will be the DMZ, and only certain VLANs will be able to access the Accounting VLANs. This can be done via the Firewall Policies
 - Further security improvements can include - Shutting down unused ports on all devices, using non-default VLANs and passwords. and implementing Access Control.
 
 ## Appliance Details

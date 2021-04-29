@@ -37,7 +37,7 @@ Subnets for Vlans will be 172.16.x.0/24 where x is the VLAN_ID.
 - Wifi (50)- Wireless devices like Smartphones, Smart Screens, Laptops or Guest devices
 - Native (99) - For Untagged Traffic for legacy devices that don't support traffic tagging
 
-All Links between the DLS and the ALSs will be trunked allowing access to all configured VLANs
+All Links between the DLS and the ALSs will be trunked allowing access to all configured VLANs. More Specific VLAN subnetting can be done when a more accurate number and type of network devices are known
 
 #### Routed Ports 
 - DLS <-> NGFW - 172.16.1.0/30

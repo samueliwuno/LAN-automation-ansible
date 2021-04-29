@@ -1,7 +1,7 @@
 # Shopify Network Design/Automation
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
- This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. the GNS3 project file, Ansible provisioning scripts and instructions on how to import the required images into GNS3 can be provided if requested via Github
+ This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, Ansible provisioning scripts and instructions on how to import the required images into GNS3 can be provided if requested via Github
  ## Terms and Acronyms
 - ALS  - Access Layer Switch
 - DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)

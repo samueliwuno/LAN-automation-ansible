@@ -33,13 +33,16 @@
     lines:
       - create vlan "toFW"
       - configure vlan toFW add ports 12 untagged
+      - configure vlan toFW ipaddress 172.16.1.1 255.255.255.252
+      - enable ipforwarding vlan toFW
       - configure vlan User_Workstation ipaddress 172.16.10.1 255.255.255.0
       - configure vlan Accounting ipaddress 172.16.20.1 255.255.255.0
       - configure vlan Printers ipaddress 172.16.30.1 255.255.255.0
       - configure vlan DMZ ipaddress 172.16.40.1 255.255.255.0
       - configure vlan Wifi ipaddress 172.16.50.1 255.255.255.0
       - configure vlan Native_Management ipaddress 172.16.99.1 255.255.255.0
-      - enable ipforwarding vlan toFW
+      - configure vlan Native add ports 7 tagged 
+      - configure vlan Wifi add ports 7 tagged 
       - configure vlan Wifi dhcp-address-range 172.16.50.50 - 172.16.50.250
       - configure vlan Wifi dhcp-options default-gateway 172.16.50.1
       - configure vlan Wifi dhcp-options dns-server 172.16.50.1

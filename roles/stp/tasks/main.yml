@@ -41,6 +41,14 @@
       - configure stpd s50 add vlan 50 ports 1-6 pvst-plus 
       - configure stpd s99 add vlan 99 ports 1-6 pvst-plus 
 
+- name: Adding VLANs and Ports for Trunk-Link to Wireless Controller for DLS1
+  exos_config:
+    lines: 
+      - configure stpd s50 add vlan 50 ports 7 pvst-plus 
+      - configure stpd s99 add vlan 99 ports 7 pvst-plus 
+  when: inventory_hostname == "DLS1"
+  
+
 - name: Creating Tages for STPD Instances
   exos_config:
     lines:

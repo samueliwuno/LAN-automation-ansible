@@ -8,7 +8,7 @@ sudo apt install -y python3 python3-pip
 
 
 echo "Installing ansible via pip3"
-pip3 install ansible
+pip3 install ansible-base ansible
 echo "installing ansible-galaxy collection packages for EXOS and Fortinet" 
 ansible-galaxy collection install community.network
 ansible-galaxy collection install extreme.exos

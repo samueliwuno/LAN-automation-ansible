@@ -1,0 +1,17 @@
+- name: Provisioning Fortigate Firewall
+
+  # Specify the hosts you want to target
+  hosts: Fortigate
+
+  vars:
+    vdom: "root"
+  # SSH Variables has been configured in the /etc/ansible/host file
+  # run playbook with 'sudo ansible-playbook shopify.automation.yml -k'
+
+
+  roles:
+    - sethostname
+    - fwinterface
+    - routing
+    - fwpolicies
+ 

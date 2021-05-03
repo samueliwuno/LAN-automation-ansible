@@ -7,6 +7,7 @@
 
 
   roles:
+    - backup
     - sethostname
     - vlans
     - stp

@@ -4,6 +4,7 @@ echo "installing prerequisites"
 sudo add-apt-repository ppa:gns3/ppa
 sudo apt update
 sudo apt install -y python3 python3-pip
+
 echo "installing python3 prerequisites"
 python3 install pip
 

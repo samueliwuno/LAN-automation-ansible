@@ -1,17 +1,18 @@
 #!/bin/bash
-echo "updating repositories"
-sudo apt update
 
-echo "adding ansible/ansible repository for automatic  updates"
-sudo apt install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
+echo "installing python3 prerequisites"
+sudo apt install -y python3 python3-pip
+echo "installing python3 prerequisites"
+python3 install pip
 
-echo "Installing ansible"
-sudo apt install ansible
 
-echo "installing ansible-galaxy collection packages for EXOS" 
-sudo ansible-galaxy collection install community.network
-sudo ansible-galaxy collection install extreme.exos
+echo "Installing ansible via pip3"
+pip3 install ansible
+
+echo "installing ansible-galaxy collection packages for EXOS and Fortinet" 
+ansible-galaxy collection install community.network
+ansible-galaxy collection install extreme.exos
+ansible-galaxy collection install -f fortinet.fortios:1.0.11
 echo "setting up ssh-agent for ansible"
 ssh-agent bash
 ssh-add ~/.ssh/known_hosts

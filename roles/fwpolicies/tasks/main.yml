@@ -1,0 +1,30 @@
+  - name: Configuring firewall policy to allow LAN_Internet
+    fortios_firewall_policy:
+      state: "present"
+      https: "True"
+      ssl_verify: "False"
+      firewall_policy:
+        srcintf:
+          -
+            name: "inside"
+        srcaddr:
+          -
+            name: "all"
+        dstintf:
+          -
+            name: "outside"
+        dstaddr:
+          -
+            name: "all"
+        schedule: "always"
+        service:
+          -
+            name: "ALL"
+        action: "accept"
+        webfilter_profile: "default"
+        av_profile: "default"
+        ips_sensor: "default"
+        nat: "enable"
+        policyid: "10"
+        status: "enable"
+        name: "LAN_INTERNET"

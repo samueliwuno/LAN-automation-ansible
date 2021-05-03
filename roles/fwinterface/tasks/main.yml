@@ -1,0 +1,92 @@
+ - name: Configuring interface to ISP.
+   fortios_system_interface:
+    state: "present" 
+    system_interface:
+      vdom: "{{ vdom }}"
+      interface: "port1"
+      name: "port1"
+      alias: "toISP"
+      role: "wan"
+      mode: "dhcp"
+      allowaccess: "ping"
+      type: "physical"
+      defaultgw: "enable"
+
+ - name: Configuring interface to ISP2.
+   fortios_system_interface:
+    state: "present"
+    system_interface:
+      vdom: "{{ vdom }}"
+      interface: "port2"
+      name: "port2"
+      alias: "toISP2"
+      role: "wan"
+      mode: "dhcp"
+      allowaccess: "ping"
+      type: "physical"
+      defaultgw: "enable"
+
+ - name: Configuring interface to LAN.
+   fortios_system_interface:
+    state: "present" 
+    system_interface:
+      vdom: "{{ vdom }}"
+      interface: "port12"
+      name: "port12"
+      alias: "toLAN"
+      role: "lan"
+      mode: "static"
+      ip: "172.16.1.2/30"
+      allowaccess: ['https', 'ping', 'ssh', 'http']
+      type: "physical"
+
+ - name: Configuring Management Interface.
+   fortios_system_interface:
+    state: "present"
+    system_interface:
+      vdom: "{{ vdom }}"
+      interface: "port9"
+      name: "port9"
+      alias: "Mgmt"
+      role: "undefined"
+      mode: "dhcp"
+      allowaccess: ['https', 'ping', 'ssh', 'http','snmp','fgfm','ftm']
+      type: "physical"
+      defaultgw: "enable"
+ 
+ - name: Configuring Outside Zones
+   fortios_system_zone:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      system_zone:
+        interface:
+         -
+            interface_name: "port1"
+         -
+            interface_name: "port2" 
+        intrazone: "allow"
+        name: "outside"
+
+ - name: Configuring Inside Zones
+   fortios_system_zone:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      system_zone:
+        interface:
+         -
+            interface_name: "port12"
+        intrazone: "allow"
+        name: "inside"
+
+ - name: Configuring Management Zones
+   fortios_system_zone:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      system_zone:
+        interface:
+         -
+            interface_name: "port9"
+        intrazone: "allow"
+        name: "mgmt"
+  
+   

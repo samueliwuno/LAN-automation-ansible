@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 echo "installing ansible-galaxy collection packages for EXOS and Fortinet" 
 ansible-galaxy collection install community.network
 ansible-galaxy collection install extreme.exos
-ansible-galaxy collection install -f fortinet.fortios:1.0.11
+ansible-galaxy collection install -f fortinet.fortios:2.0.0
 
 echo "setting up ssh-agent for ansible"
 ssh-agent bash

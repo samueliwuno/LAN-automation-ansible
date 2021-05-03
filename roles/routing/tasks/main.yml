@@ -30,3 +30,5 @@
         network_type: "broadcast"
         status: "enable"
   when: ansible_network_os == "fortinet.fortios.fortios" and inventory_hostname == "NGFW"
+  
+  

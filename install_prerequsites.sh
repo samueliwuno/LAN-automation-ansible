@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "installing prerequisites"
 sudo add-apt-repository ppa:gns3/ppa
 sudo apt update
@@ -11,9 +10,6 @@ python3 install pip
 
 echo "Installing ansible via pip3"
 pip3 install ansible
-
-
-
 echo "installing ansible-galaxy collection packages for EXOS and Fortinet" 
 ansible-galaxy collection install community.network
 ansible-galaxy collection install extreme.exos

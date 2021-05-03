@@ -7,12 +7,13 @@ sudo apt update
 sudo apt install -y python3 python3-pip
 
 
-echo "Installing ansible via pip3"
-pip3 install ansible-base ansible
 echo "installing ansible-galaxy collection packages for EXOS and Fortinet" 
 ansible-galaxy collection install community.network
 ansible-galaxy collection install extreme.exos
 ansible-galaxy collection install -f fortinet.fortios:1.0.11
+
+echo  "installing specific connection requirements for fortinet"
+pip3 install -r requirements.txt
 
 echo "setting up ssh-agent for ansible"
 ssh-agent bash

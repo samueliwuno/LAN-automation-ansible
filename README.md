@@ -1,7 +1,18 @@
 # SHOPIFY NETWORK DESIGN/AUTOMATION
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
- This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, The Ansible provisioning playbook and instructions on how to import the required images into GNS3 can be provided if requested via Github
+ This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, The Ansible provisioning playbook and instructions on how to import the required images into GNS3 can be provided if requested via Github. 
+ 
+ ## Project Environment
+ This Project was done with the following: 
+ - Ubuntu Based Distribution (18.04)
+ - Ansible 2.10.8
+ - python 3.6.9
+ - GNS3 2.2.20
+ - EXOS 31.2.1.1
+ - FortiOS 6.4.2
+
+
  ## Acronyms
 - ALS  - Access Layer Switch
 - DLS  - Distribution Layer Switch (Multi-Layer or Layer 3 Switch)
@@ -53,7 +64,7 @@ The NGFW will handle all the security policies, NAT and VPN requirements. the Fi
 Access Ports can be implemented as per Network requirement. But for now, that is outside the scope of this project
 
 ## Automation and Management
-Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). However, This projects solution will handle Automation using Ansible. For example This will be done by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Automation and Management can then be done via Ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. Below is a small snippet of what the provisioning playbook would look like
+Both the chosen Switches and Firewall Have their Cloud Management and Automation Solutions (Fortinets FMG and ExtremeCloud IQ). However, This projects solution will handle Automation using Ansible. For example, This will be done by using ansible to provision the Switches via ssh through their management interfaces. Once Provisioning is done and the Network is up and running as shown in the diagram, Remote Automation and Management can then be done via Ansible through the firewall as long as the appropriate policies and  VPN tunnels are in place. Below is a small snippet of what the provisioning playbook would look like
 
 ```
 - name: Configuring OSPF for DLS1

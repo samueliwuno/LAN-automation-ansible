@@ -1,0 +1,21 @@
+
+
+- name: Setting Hostname for Switches
+  exos_config:
+    lines: configure snmp sysName "{{ inventory_hostname }}"
+  when: ansible_network_os == "community.network.exos"
+
+- name: Setting Hostname for Firewall
+  fortios_system_global:
+    vdom: "{{ vdom }}"
+    system_global:
+      hostname: "{{ inventory_hostname }}"
+  when: ansible_network_os == "fortinet.fortios.fortios"
+
+
+
+
+
+
+
+     

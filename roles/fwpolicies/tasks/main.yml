@@ -1,8 +1,6 @@
   - name: Configuring firewall policy to allow LAN_Internet
     fortios_firewall_policy:
       state: "present"
-      https: "True"
-      ssl_verify: "False"
       firewall_policy:
         srcintf:
           -

@@ -4,7 +4,6 @@ certifi==2019.9.11
 cffi==1.13.2
 chardet==3.0.4
 cryptography==3.3.2
-fortiosapi==1.0.5
 idna==2.8
 Jinja2==2.11.3
 MarkupSafe==1.1.1

@@ -7,7 +7,7 @@
 
 
   roles:
-    - getinfo
+    - sethostname
     - vlans
     - stp
     - routing

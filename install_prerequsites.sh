@@ -1,5 +1,7 @@
 #!/bin/bash
 echo "installing prerequisites"
+sudo apt update
+sudo apt install software-properties-common
 sudo add-apt-repository ppa:gns3/ppa
 sudo apt update
 sudo apt install -y python3 python3-pip

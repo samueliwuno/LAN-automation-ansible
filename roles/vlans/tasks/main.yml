@@ -14,8 +14,8 @@
       - configure vlan DMZ tag 40
       - create vlan "Wifi"
       - configure vlan Wifi tag 50
-      - create vlan "Native_Management"
-      - configure vlan Native_Management tag 99
+      - create vlan "Native"
+      - configure vlan Native tag 99
 
 - name:  Adding Appropriate Port to VLANs
   exos_config:
@@ -25,7 +25,7 @@
       - configure vlan Printers add ports 1-6 tagged  
       - configure vlan DMZ add ports 1-6 tagged  
       - configure vlan Wifi add ports 1-6 tagged  
-      - configure vlan Native_Management add ports 1-6 tagged 
+      - configure vlan Native add ports 1-6 tagged 
       - enable ports 1-6
 
 - name: Configuring Specifics for DLS1
@@ -40,7 +40,7 @@
       - configure vlan Printers ipaddress 172.16.30.1 255.255.255.0
       - configure vlan DMZ ipaddress 172.16.40.1 255.255.255.0
       - configure vlan Wifi ipaddress 172.16.50.1 255.255.255.0
-      - configure vlan Native_Management ipaddress 172.16.99.1 255.255.255.0
+      - configure vlan Native ipaddress 172.16.99.1 255.255.255.0
       - configure vlan Native add ports 7 tagged 
       - configure vlan Wifi add ports 7 tagged 
       - configure vlan Wifi dhcp-address-range 172.16.50.50 - 172.16.50.250
@@ -58,7 +58,7 @@
       - configure vlan Printers ipaddress 172.16.30.2 255.255.255.0
       - configure vlan DMZ ipaddress 172.16.40.2 255.255.255.0
       - configure vlan Wifi ipaddress 172.16.50.2 255.255.255.0
-      - configure vlan Native_Management ipaddress 172.16.99.2 255.255.255.0
+      - configure vlan Native ipaddress 172.16.99.2 255.255.255.0
   when: inventory_hostname == "ALS1"
 
 - name: Configuring Specifics for ALS2
@@ -69,7 +69,7 @@
       - configure vlan Printers ipaddress 172.16.30.3 255.255.255.0
       - configure vlan DMZ ipaddress 172.16.40.3 255.255.255.0
       - configure vlan Wifi ipaddress 172.16.50.3 255.255.255.0
-      - configure vlan Native_Management ipaddress 172.16.99.3 255.255.255.0
+      - configure vlan Native ipaddress 172.16.99.3 255.255.255.0
   when: inventory_hostname == "ALS2"
 
 - name: Configuring Specifics for ALS3
@@ -80,7 +80,7 @@
       - configure vlan Printers ipaddress 172.16.30.4 255.255.255.0
       - configure vlan DMZ ipaddress 172.16.40.4 255.255.255.0
       - configure vlan Wifi ipaddress 172.16.50.4 255.255.255.0
-      - configure vlan Native_Management ipaddress 172.16.99.4 255.255.255.0
+      - configure vlan Native ipaddress 172.16.99.4 255.255.255.0
   when: inventory_hostname == "ALS3"
 
 
@@ -95,7 +95,7 @@
       - enable ipforwarding vlan Printers
       - enable ipforwarding vlan DMZ
       - enable ipforwarding vlan Wifi
-      - enable ipforwarding vlan Native_Management
+      - enable ipforwarding vlan Native
 
       
 - name: save running to startup when modified

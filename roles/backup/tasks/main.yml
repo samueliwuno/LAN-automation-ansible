@@ -1,0 +1,25 @@
+
+
+- name: Backing up Switches configs
+  exos_config:
+    backup: yes
+    backup_options:
+      filename: "{{inventory_hostname}}.cfg"
+      dir_path: /tmp
+  when: ansible_network_os == "community.network.exos"
+
+- name: Backing up Firewall Configs
+  block:
+    - name: Creating Backup file.
+      fortios_monitor_fact:
+        selector: 'system_config_backup'
+        vdom: 'root'
+        params:
+          scope: 'global'
+      register: backupinfo
+
+    - name: Copying Backup to Local Directory.
+      copy:
+        content: '{{ backupinfo.meta.raw }}'
+        dest: '/tmp/{{inventory_hostname}}.backup'
+  when: ansible_network_os == "fortinet.fortios.fortios"

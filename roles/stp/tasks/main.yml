@@ -47,7 +47,7 @@
       - configure stpd s50 add vlan 50 ports 7 pvst-plus 
       - configure stpd s99 add vlan 99 ports 7 pvst-plus 
   when: inventory_hostname == "DLS1"
-  
+
 
 - name: Creating Tages for STPD Instances
   exos_config:
@@ -79,8 +79,3 @@
       - configure stpd s50 priority 28672
       - configure stpd s99 priority 28672
   when: inventory_hostname == "DLS1"
-
-
-- name: save running to startup when modified
-  exos_config:
-    save_when: modified

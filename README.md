@@ -102,8 +102,25 @@ The task above enables and configures Ospf for DLS1. the playbook will only comp
 
 
 ## Installation
-Simply running the Install_prerequsites.sh should install the required packages and 
+- Simply running the Install_prerequsites.sh should install the required packages and configurations
+- Both the switches and the firewall require a user password set for their admin accounts
+- for the switches, ssh is disabled by default and needs to be enabled. On the switches, run the following commands
+
+```
+configure account admin password
+# default password is empty, add new <password>
+
+create sshd2 user-key admin <password>
+configure sshd2 user-key admin add user admin 
+configure ssh2 key 
+yes
+enable ssh2
+
+```
 ## Running the Playbook
+Make sure to ssh into the devices once so that they are added to your list of known hosts
+```
 ansible-playbook shopify_switch_provisioning.yml -i hosts -k
+```
 
 

@@ -1,0 +1,19 @@
+[EXOS]
+DLS1 ansible_host=<ip of L3 switch>
+ALS1 ansible_host=<ip of L2 switch  on 1st floor>
+ALS2 ansible_host=<ip of L2 Switch on 2nd floor>
+ALS3 ansible_host=<ip of L2 Switch on 3rd floor>
+
+[EXOS:vars]
+ansible_user= admin
+ansible_connection= ansible.netcommon.network_cli
+ansible_network_os= community.network.exos
+
+[Fortigate]
+NGFW ansible_host=<ip of firewall>
+
+[Fortigate:vars]
+ansible_user= admin
+ansible_connection= httpapi
+ansible_network_os= fortinet.fortios.fortios
+ansible_collection= fortinet.fortios 

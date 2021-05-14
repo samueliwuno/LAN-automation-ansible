@@ -133,8 +133,8 @@ enable ssh2
 ## Running the Playbook
 Make sure to ssh into the devices once so that they are added to your list of known hosts
 ```
-ansible-playbook shopify_switch_provisioning.yml -i Hosts -k
-ansible-playbook shopify_fw_provisioning.yml -i Hosts -k
+ansible-playbook -i Hosts shopify_switch_provisioning.yml  -k
+ansible-playbook -i Hosts shopify_fw_provisioning.yml  -k
 ```
 
 

@@ -118,18 +118,18 @@ enable ssh2
 
 ```
 ## Plays
-- for the switches the playbook will configure the following according to the topology
- - create initial backup
- - configure Hostnames
- - configure VLANs and IP addressing  
- - configure STP < Rapid-pvst,802.1q)
- - Configure OSPF
+- For the switches the playbook will configure the following according to the topology
+  * create initial backup
+  * configure Hostnames
+  * configure VLANs and IP addressing  
+  * configure STP < Rapid-pvst,802.1q)
+  * Configure OSPF
 - For the firewall, the playbook will configure the following according to the topology,
- - create initial backup
- - configure Hpstname
- - configure interfaces and IP addressing
- - configure OSPF 
- - create policy to allow Internal->Internet Traffic
+  * create initial backup
+  * configure Hpstname
+  * configure interfaces and IP addressing
+  * configure OSPF 
+  * create policy to allow Internal->Internet Traffic
 ## Running the Playbook
 Make sure to ssh into the devices once so that they are added to your list of known hosts
 ```

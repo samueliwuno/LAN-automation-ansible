@@ -23,6 +23,6 @@ ssh-add ~/.ssh/known_hosts
 export ANSIBLE_HOST_KEY_CHECKING=False
 
 echo "installing GNS3"                               
-sudo apt install gns3 gns3-gui gns3-server 
+sudo apt install gns3  
 
 exec bash

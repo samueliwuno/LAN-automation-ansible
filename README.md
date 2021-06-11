@@ -1,7 +1,7 @@
-# SHOPIFY NETWORK DESIGN/AUTOMATION
+# LAN NETWORK DESIGN/AUTOMATION
 ---------------------------------------------------------
 #### Author: Samuel Iwuno
- This Project shows the implementation of a LAN required for a Shopify Workspace in GNS3. The GNS3 project file, The Ansible provisioning playbook and instructions on how to import the required images into GNS3 can be provided if requested via Github. 
+ This Project shows the implementation of a LAN required for a company Workspace in GNS3. The GNS3 project file, The Ansible provisioning playbook and instructions on how to import the required images into GNS3 can be provided if requested via Github. 
  
  ## Project Environment
  This Project was done with the following: 
@@ -133,8 +133,8 @@ enable ssh2
 ## Running the Playbook
 Make sure to ssh into the devices once so that they are added to your list of known hosts
 ```
-ansible-playbook -i Hosts shopify_switch_provisioning.yml  -k
-ansible-playbook -i Hosts shopify_fw_provisioning.yml  -k
+ansible-playbook -i Hosts switch_provisioning.yml  -k
+ansible-playbook -i Hosts fw_provisioning.yml  -k
 ```
 
 
